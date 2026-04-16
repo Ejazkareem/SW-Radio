@@ -150,10 +150,10 @@ export default function App() {
         {/* Radio Gallery Section */}
         <section className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
-            { src: 'input_file_0.png', title: 'Radio Collection' },
-            { src: 'input_file_1.png', title: 'SW Specialist' },
-            { src: 'input_file_2.png', title: 'DX Station' },
-            { src: 'input_file_3.png', title: 'World Radio Day' }
+            { src: 'https://picsum.photos/seed/vintage-radio/800/800', title: 'Radio Collection' },
+            { src: 'https://picsum.photos/seed/shortwave/800/800', title: 'SW Specialist' },
+            { src: 'https://picsum.photos/seed/dxing/800/800', title: 'DX Station' },
+            { src: 'https://picsum.photos/seed/broadcasting/800/800', title: 'World Radio Day' }
           ].map((img, i) => (
             <div key={i} className="bg-card border border-border rounded-xl overflow-hidden group aspect-square relative cursor-pointer shadow-lg hover:shadow-primary/10 transition-all duration-500">
               <img 

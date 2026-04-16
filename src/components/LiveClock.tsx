@@ -39,7 +39,7 @@ export const LiveClock: React.FC = () => {
       
       <div className="hidden sm:block w-32 h-32 md:w-40 md:h-40 relative rounded-lg overflow-hidden border border-border group-hover:border-primary/50 transition-colors shrink-0">
         <img 
-          src="input_file_4.png" 
+          src="https://picsum.photos/seed/radio-shelf/600/600" 
           alt="Radio Collection Shelf" 
           referrerPolicy="no-referrer"
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
