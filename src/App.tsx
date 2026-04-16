@@ -27,24 +27,27 @@ export default function App() {
     setTotalVisitors(prev => prev + 1);
 
     // Detect visitor country
-    fetch('https://ipapi.co/json/')
+    fetch('https://ipwho.is/')
       .then(res => res.json())
       .then(data => {
-        if (data.country_name) {
-          setVisitorCountry(data.country_name);
+        if (data.success && data.country) {
+          setVisitorCountry(data.country);
           
           // Update country stats
           setVisitorCountries(prev => {
-            const existing = prev.find(c => c.country === data.country_name);
+            const existing = prev.find(c => c.country === data.country);
             if (existing) {
-              return prev.map(c => c.country === data.country_name ? { ...c, count: c.count + 1 } : c);
+              return prev.map(c => c.country === data.country ? { ...c, count: c.count + 1 } : c);
             } else {
-              return [...prev, { country: data.country_name, count: 1 }].sort((a, b) => b.count - a.count);
+              return [...prev, { country: data.country, count: 1 }].sort((a, b) => b.count - a.count);
             }
           });
         }
       })
-      .catch(err => console.error('Error detecting country:', err));
+      .catch(() => {
+        // Silently fail or use a default if detection fails
+        console.log('Visitor location detection skipped or unavailable');
+      });
   }, []);
 
   return (
@@ -139,6 +142,33 @@ export default function App() {
             </div>
           </div>
         </aside>
+
+        {/* Radio Gallery Section */}
+        <section className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[
+            { src: 'input_file_0.png', title: 'Radio Collection' },
+            { src: 'input_file_1.png', title: 'SW Specialist' },
+            { src: 'input_file_2.png', title: 'DX Station' },
+            { src: 'input_file_3.png', title: 'World Radio Day' }
+          ].map((img, i) => (
+            <div key={i} className="bg-card border border-border rounded-xl overflow-hidden group aspect-square relative cursor-pointer shadow-lg hover:shadow-primary/10 transition-all duration-500">
+              <img 
+                src={img.src} 
+                alt={img.title}
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-background/20 group-hover:bg-transparent transition-colors duration-500" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
+                <div className="text-[10px] font-bold text-primary uppercase tracking-widest mb-1">Mr. Ejaz Kareem</div>
+                <div className="text-xs font-medium text-foreground">{img.title}</div>
+              </div>
+              <div className="absolute top-3 right-3 p-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
+                <RadioTower className="w-3 h-3 text-primary" />
+              </div>
+            </div>
+          ))}
+        </section>
 
         {/* Footer */}
         <footer className="lg:col-span-3 py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
