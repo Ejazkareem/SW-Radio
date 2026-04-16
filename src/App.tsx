@@ -67,9 +67,13 @@ export default function App() {
           </div>
         </header>
 
+        {/* Live Clock Section */}
+        <div className="lg:col-span-3">
+          <LiveClock />
+        </div>
+
         {/* Sidebar Left */}
         <aside className="flex flex-col gap-4">
-          <LiveClock />
           <VisitorStats totalVisitors={totalVisitors} visitorCountries={visitorCountries} />
           <div className="bg-card border border-border rounded-xl p-5 flex flex-col gap-4">
             <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Connect</h3>
