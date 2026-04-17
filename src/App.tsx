@@ -150,10 +150,10 @@ export default function App() {
         {/* Radio Gallery Section */}
         <section className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
-            { src: 'input_file_0.png', title: 'World Radio Day 2024' },
-            { src: 'input_file_1.png', title: 'Radio Collection' },
-            { src: 'input_file_2.png', title: 'SW Specialist' },
-            { src: 'input_file_3.png', title: 'World Radio Day 2024' }
+            { src: 'input_file_0.png', title: 'World Radio Day - My Collection' },
+            { src: 'input_file_1.png', title: 'Radio Day 2024 Presentation' },
+            { src: 'input_file_2.png', title: 'Vintage Radio Display' },
+            { src: 'input_file_3.png', title: 'DX Station Setup' }
           ].map((img, i) => (
             <div key={i} className="bg-card border border-border rounded-xl overflow-hidden group aspect-square relative cursor-pointer shadow-lg hover:shadow-primary/10 transition-all duration-500">
               <img 
